@@ -2,7 +2,7 @@
  * $HeadURL$
  * $LastChangedBy$
  * $Date$
- * $Revision$
+ * $Revision: 91 $
  */
 
 using System;
@@ -63,7 +63,9 @@ namespace BlueprintIT.Storage.File
 
 			set
 			{
+				((Folder)parent).Uncache(this);
 				file.MoveTo(file.Directory.FullName+"\\"+value);
+				((Folder)parent).Cache(this);
 			}
 		}
 
@@ -71,6 +73,7 @@ namespace BlueprintIT.Storage.File
 		{
 			try
 			{
+				((Folder)parent).Uncache(this);
 				path=store.BaseDir.FullName+path;
 				file.MoveTo(path);
 				string[] paths = path.Split('/');
@@ -80,10 +83,12 @@ namespace BlueprintIT.Storage.File
 					newpath+='/'+paths[loop];
 				}
 				parent = store.GetFolder(newpath);
+				((Folder)parent).Cache(this);
 				return true;
 			}
 			catch (IOException)
 			{
+				((Folder)parent).Cache(this);
 				return false;
 			}
 		}
@@ -91,14 +96,17 @@ namespace BlueprintIT.Storage.File
 		public override bool Move(IFolder location)
 		{
 			string path = store.BaseDir.FullName+location.Path.Replace('/','\\')+"\\"+Name;
+			((Folder)parent).Uncache(this);
 			try
 			{
 				file.MoveTo(path);
 				parent=location;
+				((Folder)parent).Cache(this);
 				return true;
 			}
 			catch (IOException)
 			{
+				((Folder)parent).Cache(this);
 				return false;
 			}
 		}
