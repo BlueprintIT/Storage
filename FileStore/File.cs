@@ -2,7 +2,7 @@
  * $HeadURL$
  * $LastChangedBy$
  * $Date$
- * $Revision: 91 $
+ * $Revision$
  */
 
 using System;
@@ -23,6 +23,22 @@ namespace BlueprintIT.Storage.File
 		{
 			this.file=file;
 			this.store=store;
+		}
+
+		public override bool Hidden
+		{
+			get
+			{
+				return (file.Attributes & FileAttributes.Hidden)==FileAttributes.Hidden;
+			}
+
+			set
+			{
+				if (value!=Hidden)
+				{
+					file.Attributes=file.Attributes^FileAttributes.Hidden;
+				}
+			}
 		}
 
 		public override DateTime Date
@@ -71,16 +87,24 @@ namespace BlueprintIT.Storage.File
 
 		public override bool Move(string path)
 		{
+			if (!path.StartsWith("/"))
+			{
+				return false;
+			}
 			try
 			{
 				((Folder)parent).Uncache(this);
-				path=store.BaseDir.FullName+path;
-				file.MoveTo(path);
+				string targetpath=store.BaseDir.FullName+path.Replace('/','\\');
+				file.MoveTo(targetpath);
 				string[] paths = path.Split('/');
 				string newpath="";
-				for (int loop=0; loop<(paths.Length-1); loop++)
+				for (int loop=1; loop<(paths.Length-1); loop++)
 				{
 					newpath+='/'+paths[loop];
+				}
+				if (newpath.Length==0)
+				{
+					newpath="/";
 				}
 				parent = store.GetFolder(newpath);
 				((Folder)parent).Cache(this);
@@ -144,7 +168,7 @@ namespace BlueprintIT.Storage.File
 
 		public override Stream Append()
 		{
-			return file.Open(FileMode.Append);
+			return file.Open(FileMode.Append,FileAccess.Write);
 		}
 
 		public override Stream Overwrite()

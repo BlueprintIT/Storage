@@ -46,6 +46,15 @@ namespace BlueprintIT.Storage
 		}
 
 		/// <summary>
+		/// <see cref="IEntry.Hidden"></see>
+		/// </summary>
+		public abstract bool Hidden
+		{
+			get;
+			set;
+		}
+
+		/// <summary>
 		/// Generates the path of this entry using the path of the parent folder and this entry's name.
 		/// <see cref="IEntry.Path"></see>
 		/// </summary>
@@ -55,11 +64,16 @@ namespace BlueprintIT.Storage
 			{
 				if (parent!=null)
 				{
-					return parent.Path+"/"+Name;
+					string path = parent.Path;
+					if (path!="/")
+					{
+						path=path+"/";
+					}
+					return path+Name;
 				}
 				else
 				{
-					return "/"+Name;
+					return "/";
 				}
 			}
 		}

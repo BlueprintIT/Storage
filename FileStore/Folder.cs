@@ -2,7 +2,7 @@
  * $HeadURL$
  * $LastChangedBy$
  * $Date$
- * $Revision: 91 $
+ * $Revision$
  */
 
 using System;
@@ -31,11 +31,11 @@ namespace BlueprintIT.Storage.File
 		{
 			if (entry is Folder)
 			{
-				folders[entry.Name]=entry;
+				folders[entry.Name.ToLower()]=entry;
 			}
 			else if (entry is File)
 			{
-				files[entry.Name]=entry;
+				files[entry.Name.ToLower()]=entry;
 			}
 		}
 
@@ -43,11 +43,11 @@ namespace BlueprintIT.Storage.File
 		{
 			if (entry is Folder)
 			{
-				folders.Remove(entry);
+				folders.Remove(entry.Name.ToLower());
 			}
 			else if (entry is File)
 			{
-				files.Remove(entry);
+				files.Remove(entry.Name.ToLower());
 			}
 		}
 
@@ -92,6 +92,22 @@ namespace BlueprintIT.Storage.File
 			}
 		}
 
+		public override bool Hidden
+		{
+			get
+			{
+				return (dir.Attributes & FileAttributes.Hidden)==FileAttributes.Hidden;
+			}
+
+			set
+			{
+				if (value!=Hidden)
+				{
+					dir.Attributes=dir.Attributes^FileAttributes.Hidden;
+				}
+			}
+		}
+
 		public override IEntry this[string name]
 		{
 			get
@@ -120,16 +136,24 @@ namespace BlueprintIT.Storage.File
 
 		public override bool Move(string path)
 		{
+			if (!path.StartsWith("/"))
+			{
+				return false;
+			}
 			try
 			{
 				((Folder)parent).Uncache(this);
-				path=store.BaseDir.FullName+path;
-				dir.MoveTo(path);
+				string targetpath=store.BaseDir.FullName+path.Replace('/','\\');
+				dir.MoveTo(targetpath);
 				string[] paths = path.Split('/');
 				string newpath="";
-				for (int loop=0; loop<(paths.Length-1); loop++)
+				for (int loop=1; loop<(paths.Length-1); loop++)
 				{
 					newpath+='/'+paths[loop];
+				}
+				if (newpath.Length==0)
+				{
+					newpath="/";
 				}
 				parent = store.GetFolder(newpath);
 				((Folder)parent).Cache(this);

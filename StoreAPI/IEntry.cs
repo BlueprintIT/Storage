@@ -24,6 +24,17 @@ namespace BlueprintIT.Storage
 		}
 
 		/// <summary>
+		/// Gets or sets whether this entry is hidden.
+		/// </summary>
+		/// <remarks>Many OS's do not support this. If you are going to be marking a file or
+		/// folder hidden then make its name begin with a . for it to be hidden on *nix systems.</remarks>
+		bool Hidden
+		{
+			get;
+			set;
+		}
+
+		/// <summary>
 		/// Gets the full path of this entry relative to the store root.
 		/// </summary>
 		string Path

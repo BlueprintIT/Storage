@@ -76,7 +76,7 @@ namespace BlueprintIT.Storage
 			try
 			{
 				Assembly assembly = Assembly.LoadFrom(file.FullName);
-				FileStream stream = assembly.GetFile("store.xml");
+				Stream stream = assembly.GetManifestResourceStream("store.xml");
 				if (stream!=null)
 				{
 					XmlDocument doc = new XmlDocument();

@@ -18,7 +18,7 @@
                 OutputType = "Library"
                 PreBuildEvent = ""
                 PostBuildEvent = ""
-                RootNamespace = "BlueprintIT.Storage.FTP"
+                RootNamespace = ""
                 RunPostBuildEvent = "OnBuildSuccess"
                 StartupObject = ""
             >
@@ -96,7 +96,7 @@
                 />
                 <File
                     RelPath = "store.xml"
-                    BuildAction = "Content"
+                    BuildAction = "EmbeddedResource"
                 />
             </Include>
         </Files>
