@@ -59,7 +59,7 @@ namespace BlueprintIT.Storage.File
 				DirectoryInfo dir = new DirectoryInfo(uri.LocalPath);
 				if (dir.Exists)
 				{
-					return new Store(dir);
+					return new Store(dir,uri);
 				}
 			}
 			return null;

@@ -19,7 +19,7 @@ namespace BlueprintIT.Storage.File
 		private Folder root;
 		private DirectoryInfo basedir;
 
-		public Store(DirectoryInfo basedir)
+		public Store(DirectoryInfo basedir, Uri uri): base(uri)
 		{
 			this.basedir=basedir;
 			this.root=new Folder(basedir,this,null);

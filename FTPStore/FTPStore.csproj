@@ -70,20 +70,15 @@
                     HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.dll"
                 />
                 <Reference
-                    Name = "System.Data"
-                    AssemblyName = "System.Data"
-                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.Data.dll"
-                />
-                <Reference
-                    Name = "System.XML"
-                    AssemblyName = "System.Xml"
-                    HintPath = "C:\WINDOWS\Microsoft.NET\Framework\v1.1.4322\System.XML.dll"
-                />
-                <Reference
                     Name = "StoreAPI"
                     Project = "{7B9024AF-E9F9-4B8D-9398-4816BFB5B94A}"
                     Package = "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}"
                     Private = "False"
+                />
+                <Reference
+                    Name = "edtftpnet-1.1.5"
+                    AssemblyName = "edtftpnet-1.1.5"
+                    HintPath = "..\..\..\..\..\..\NET Libs\edtftpnet-1.1.5\bin\edtftpnet-1.1.5.dll"
                 />
             </References>
         </Build>
