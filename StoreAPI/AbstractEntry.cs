@@ -26,6 +26,14 @@ namespace BlueprintIT.Storage
 		}
 
 		/// <summary>
+		/// <see cref="IEntry.Uri"></see>
+		/// </summary>
+		public abstract Uri Uri
+		{
+			get;
+		}
+
+		/// <summary>
 		/// <see cref="IEntry.Folder"></see>
 		/// </summary>
 		public IFolder Folder

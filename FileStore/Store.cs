@@ -33,6 +33,14 @@ namespace BlueprintIT.Storage.File
 			}
 		}
 
+		public override Uri Uri
+		{
+			get
+			{
+				return new Uri("file:///"+basedir.FullName.Replace('\\','/'));
+			}
+		}
+
 		public override IFolder Root
 		{
 			get

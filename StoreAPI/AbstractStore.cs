@@ -23,6 +23,14 @@ namespace BlueprintIT.Storage
 		}
 
 		/// <summary>
+		/// <see cref="IStore.Uri"></see>
+		/// </summary>
+		public abstract Uri Uri
+		{
+			get;
+		}
+
+		/// <summary>
 		/// Seeks through the folders for the given file.
 		/// <see cref="IStore.GetFile"></see>
 		/// </summary>

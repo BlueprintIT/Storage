@@ -15,6 +15,14 @@ namespace BlueprintIT.Storage
 	public interface IStore
 	{
 		/// <summary>
+		/// Gets the uri used to create this store.
+		/// </summary>
+		Uri Uri
+		{
+			get;
+		}
+
+		/// <summary>
 		/// Gets the root folder of this store.
 		/// </summary>
 		IFolder Root

@@ -43,6 +43,14 @@ namespace BlueprintIT.Storage
 		}
 
 		/// <summary>
+		/// Gets a unique uri to identify this entry.
+		/// </summary>
+		Uri Uri
+		{
+			get;
+		}
+
+		/// <summary>
 		/// Gets the folder that this entry is held in.
 		/// </summary>
 		/// <remarks>

@@ -25,6 +25,14 @@ namespace BlueprintIT.Storage.File
 			this.store=store;
 		}
 
+		public override Uri Uri
+		{
+			get
+			{
+				return new Uri(store.Uri,Path.Substring(1));
+			}
+		}
+
 		public override bool Hidden
 		{
 			get

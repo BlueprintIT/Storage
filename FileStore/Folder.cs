@@ -77,6 +77,14 @@ namespace BlueprintIT.Storage.File
 			}
 		}
 
+		public override Uri Uri
+		{
+			get
+			{
+				return new Uri(store.Uri,Path.Substring(1));
+			}
+		}
+
 		public override string Name
 		{
 			get
