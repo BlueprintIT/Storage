@@ -81,7 +81,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
-				return new Uri(store.Uri,Path.Substring(1));
+				return new Uri("file:///"+dir.FullName);
 			}
 		}
 
