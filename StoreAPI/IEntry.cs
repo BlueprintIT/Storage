@@ -51,6 +51,12 @@ namespace BlueprintIT.Storage
 		}
 
 		/// <summary>
+		/// Deletes this entry if it exists.
+		/// </summary>
+		/// <returns>True if the entry was deleted, false otherwise.</returns>
+		bool Delete();
+
+		/// <summary>
 		/// Creates this entry if it doesn't already exists.
 		/// </summary>
 		/// <returns>True if the entry exists, false otherwise.</returns>
