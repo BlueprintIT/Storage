@@ -1,3 +1,10 @@
+/*
+ * $HeadURL$
+ * $LastChangedBy$
+ * $Date$
+ * $Revision$
+ */
+
 using System.Reflection;
 using System.Runtime.CompilerServices;
 
