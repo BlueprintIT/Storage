@@ -15,6 +15,14 @@ namespace BlueprintIT.Storage
 	public interface IStoreProvider
 	{
 		/// <summary>
+		/// Gets whether this store provider supports the browse method.
+		/// </summary>
+		bool SupportsBrowse
+		{
+			get;
+		}
+
+		/// <summary>
 		/// Gets the protocol that this store can handle i.e. "ftp", "file" etc.
 		/// </summary>
 		string Protocol
@@ -29,6 +37,13 @@ namespace BlueprintIT.Storage
 		{
 			get;
 		}
+
+		/// <summary>
+		/// Browses for a store. Throws an exception if this provider does not support browsing.
+		/// </summary>
+		/// <param name="uri">The uri to begin browsing with.</param>
+		/// <returns>The found store URI or null if the browse was canceled.</returns>
+		Uri Browse(Uri uri);
 
 		/// <summary>
 		/// Opens the store using a given url.
