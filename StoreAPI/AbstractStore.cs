@@ -14,6 +14,13 @@ namespace BlueprintIT.Storage
 	/// </summary>
 	public abstract class AbstractStore: IStore
 	{
+		protected Uri uri;
+
+		protected AbstractStore(Uri uri)
+		{
+			this.uri=uri;
+		}
+
 		/// <summary>
 		/// <see cref="IStore.Root"></see>
 		/// </summary>
@@ -25,9 +32,12 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// <see cref="IStore.Uri"></see>
 		/// </summary>
-		public abstract Uri Uri
+		public virtual Uri Uri
 		{
-			get;
+			get
+			{
+				return uri;
+			}
 		}
 
 		/// <summary>
