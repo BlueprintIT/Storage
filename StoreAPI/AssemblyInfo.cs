@@ -13,12 +13,12 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Generic Storage API")]
+[assembly: AssemblyDescription("Blueprint IT Storage API")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyCompany("Blueprint IT Ltd.")]
+[assembly: AssemblyProduct("Storage API")]
+[assembly: AssemblyCopyright("Blueprint IT Ltd.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 
