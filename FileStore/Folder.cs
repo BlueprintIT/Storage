@@ -51,29 +51,29 @@ namespace BlueprintIT.Storage.File
 			}
 		}
 
-		public override IEnumerator Files
+		public override IFile[] Files
 		{
 			get
 			{
-				IList list = new ArrayList();
+				ArrayList list = new ArrayList();
 				foreach (FileInfo file in dir.GetFiles())
 				{
 					list.Add(GetFile(file.Name));
 				}
-				return list.GetEnumerator();
+				return (IFile[])list.ToArray(Type.GetType("BlueprintIT.Storage.File.File"));
 			}
 		}
 
-		public override IEnumerator Folders
+		public override IFolder[] Folders
 		{
 			get
 			{
-				IList list = new ArrayList();
+				ArrayList list = new ArrayList();
 				foreach (DirectoryInfo folder in dir.GetDirectories())
 				{
 					list.Add(GetFolder(folder.Name));
 				}
-				return list.GetEnumerator();
+				return (IFolder[])list.ToArray(Type.GetType("BlueprintIT.Storage.File.Folder"));
 			}
 		}
 

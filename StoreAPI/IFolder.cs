@@ -18,7 +18,7 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// Returns an enumeration of all the subfolders.
 		/// </summary>
-		IEnumerator Folders
+		IFolder[] Folders
 		{
 			get;
 		}
@@ -26,7 +26,7 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// Returns an enumeration of all the files.
 		/// </summary>
-		IEnumerator Files
+		IFile[] Files
 		{
 			get;
 		}

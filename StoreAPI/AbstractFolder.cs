@@ -22,7 +22,7 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// <see cref="IFolder.Folders"></see>
 		/// </summary>
-		public abstract IEnumerator Folders
+		public abstract IFolder[] Folders
 		{
 			get;
 		}
@@ -30,7 +30,7 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// <see cref="IFolder.Files"></see>
 		/// </summary>
-		public abstract IEnumerator Files
+		public abstract IFile[] Files
 		{
 			get;
 		}
