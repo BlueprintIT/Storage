@@ -186,7 +186,7 @@ namespace BlueprintIT.Storage.File
 
 		public override Stream Overwrite()
 		{
-			return file.OpenWrite();
+			return file.Open(FileMode.Create,FileAccess.Write);
 		}
 	}
 }
