@@ -81,6 +81,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				dir.Refresh();
 				return dir.Name;
 			}
 
@@ -96,6 +97,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				dir.Refresh();
 				return (dir.Attributes & FileAttributes.Hidden)==FileAttributes.Hidden;
 			}
 
@@ -130,6 +132,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				dir.Refresh();
 				return dir.Exists;
 			}
 		}

@@ -29,6 +29,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				file.Refresh();
 				return (file.Attributes & FileAttributes.Hidden)==FileAttributes.Hidden;
 			}
 
@@ -45,6 +46,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				file.Refresh();
 				return file.LastWriteTime;
 			}
 
@@ -58,6 +60,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				file.Refresh();
 				return file.Length;
 			}
 		}
@@ -66,6 +69,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				file.Refresh();
 				return file.Exists;
 			}
 		}
@@ -74,6 +78,7 @@ namespace BlueprintIT.Storage.File
 		{
 			get
 			{
+				file.Refresh();
 				return file.Name;
 			}
 
