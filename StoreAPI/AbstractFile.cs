@@ -31,7 +31,7 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// <see cref="IFile.Size"></see>
 		/// </summary>
-		public abstract int Size
+		public abstract long Size
 		{
 			get;
 		}

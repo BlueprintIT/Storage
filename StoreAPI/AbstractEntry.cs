@@ -14,7 +14,7 @@ namespace BlueprintIT.Storage
 	/// </summary>
 	public abstract class AbstractEntry: IEntry
 	{
-		private IFolder parent;
+		protected IFolder parent;
 
 		/// <summary>
 		/// Creates the entry, retaining a reference to the parent folder.
@@ -85,20 +85,11 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// <see cref="IEntry.Move"></see>
 		/// </summary>
-		public abstract void Move(string path);
+		public abstract bool Move(string path);
 
 		/// <summary>
-		/// Just updates the parent reference. Must be overriden.
 		/// <see cref="IEntry.Move"></see>
 		/// </summary>
-		public void Move(IFolder folder)
-		{
-			parent=folder;
-		}
-
-		/// <summary>
-		/// Closes this entry and any open streams to it.
-		/// </summary>
-		internal abstract void Close();
+		public abstract bool Move(IFolder folder);
 	}
 }

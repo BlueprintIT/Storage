@@ -29,7 +29,7 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// The size of this file in bytes.
 		/// </summary>
-		int Size
+		long Size
 		{
 			get;
 		}

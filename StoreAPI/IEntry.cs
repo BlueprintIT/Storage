@@ -67,12 +67,12 @@ namespace BlueprintIT.Storage
 		/// though setting the name is better for that.
 		/// </summary>
 		/// <param name="path">The new path for the entry.</param>
-		void Move(string path);
+		bool Move(string path);
 
 		/// <summary>
 		/// Moves this entry to a given folder.
 		/// </summary>
 		/// <param name="folder">The folder to move to.</param>
-		void Move(IFolder folder);
+		bool Move(IFolder folder);
 	}
 }

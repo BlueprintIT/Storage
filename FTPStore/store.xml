@@ -1,3 +1,3 @@
 <store>
-	<provider>BlueprintIT.Filestore.FTP.StoreProvider</provider>
+	<provider>BlueprintIT.Storage.FTP.StoreProvider</provider>
 </store>

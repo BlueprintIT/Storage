@@ -63,12 +63,6 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// <see cref="IStore.Close"></see>
 		/// </summary>
-		public void Close()
-		{
-			if (Root is AbstractFolder)
-			{
-				((AbstractFolder)Root).Close();
-			}
-		}
+		public abstract void Close();
 	}
 }
