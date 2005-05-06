@@ -80,6 +80,11 @@
                     AssemblyName = "edtftpnet-1.1.5"
                     HintPath = "..\..\..\..\..\..\NET Libs\edtftpnet-1.1.5\bin\edtftpnet-1.1.5.dll"
                 />
+                <Reference
+                    Name = "log4net"
+                    AssemblyName = "log4net"
+                    HintPath = "..\..\..\..\..\..\NET Libs\log4net-1.2.9-beta\bin\net\1.1\release\log4net.dll"
+                />
             </References>
         </Build>
         <Files>
