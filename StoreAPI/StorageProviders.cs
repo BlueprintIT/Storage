@@ -10,22 +10,25 @@ using System.IO;
 using System.Xml;
 using System.Reflection;
 using System.Collections;
+using log4net;
 
 namespace BlueprintIT.Storage
 {
 	/// <summary>
 	/// Summary description for StorageProviders.
 	/// </summary>
-	public class StorageProviders: IEnumerable
+	public class StorageProviders
 	{
-		private IDictionary providers = new Hashtable();
+		private static readonly ILog log = LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
+		private static IDictionary providers = new Hashtable();
 
 		/// <summary>
 		/// Creates the StorageProviders class and loads filestores.
 		/// </summary>
-		public StorageProviders()
+		static StorageProviders()
 		{
-			Assembly assembly = GetType().Assembly;
+			Assembly assembly = System.Reflection.MethodBase.GetCurrentMethod().DeclaringType.Assembly;
 			Uri uri = new Uri(assembly.EscapedCodeBase);
 			if (uri.IsFile)
 			{
@@ -34,7 +37,7 @@ namespace BlueprintIT.Storage
 			}
 		}
 
-		public IStore OpenStore(Uri uri)
+		public static IStore OpenStore(Uri uri)
 		{
 			IStoreProvider provider = (IStoreProvider)providers[uri.Scheme];
 			if (provider!=null)
@@ -47,16 +50,19 @@ namespace BlueprintIT.Storage
 		/// <summary>
 		/// Gets an enumerator to all the storage providers.
 		/// </summary>
-		public IEnumerator GetEnumerator()
+		public static ICollection Providers
 		{
-			return providers.Values.GetEnumerator();
+			get
+			{
+				return providers.Values;
+			}
 		}
 
 		/// <summary>
 		/// Scans a directory for assemblies that contain storage providers.
 		/// </summary>
 		/// <param name="dir">The directory to scan.</param>
-		public void ScanStores(DirectoryInfo dir)
+		public static void ScanStores(DirectoryInfo dir)
 		{
 			foreach (FileInfo file in dir.GetFiles("*.dll"))
 			{
@@ -71,7 +77,7 @@ namespace BlueprintIT.Storage
 		/// Loads a potential store provider from an assembly.
 		/// </summary>
 		/// <param name="file">The potential assembly.</param>
-		public void LoadPotentialStore(FileInfo file)
+		public static void LoadPotentialStore(FileInfo file)
 		{
 			try
 			{
